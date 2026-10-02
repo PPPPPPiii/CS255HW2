@@ -1,16 +1,13 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-char* stringReverse(char* string){
-    int len = strlen(string);  // use library function instead of manual loop
-    char* result = malloc((len + 1) * sizeof(char));
+void stringReverse(char* string){
+    int len = strlen(string);
     
-    // Direct index mapping: result[i] = string[len-1-i]
-    for(int i = 0; i < len; i++){
-        result[i] = string[len - 1 - i];
+    // Swap characters from both ends moving toward the middle
+    for(int i = 0; i < len / 2; i++){
+        char temp = string[i];
+        string[i] = string[len - 1 - i];
+        string[len - 1 - i] = temp;
     }
-    
-    result[len] = '\0';
-    return result;
 }
